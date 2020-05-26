@@ -16,7 +16,6 @@ export class PoiService {
     httpClient.configure(http => {
       http.withBaseUrl('http://localhost:3000');
     });
-
     this.getUsers();
 
   }
@@ -37,12 +36,13 @@ export class PoiService {
     });
     console.log(users);
   }
- async getPois(){
-   const response = await this.httpClient.get('/api/pois');
-   this.pois = await  response.content;
-   console.log("Poi information")
-   console.log(this.pois);
- }
+  async getPois(){
+    const response = await this.httpClient.get('/api/pois');
+    this.pois = await  response.content;
+    console.log("Poi information")
+    console.log(this.pois);
+    return this.pois;
+  }
   /*
   async getPois() {
   const response = await this.httpClient.get('/api/pois');
@@ -80,7 +80,7 @@ export class PoiService {
   }
 */
 
-  async addPoi() {
+  async createPoi(AIRO_ID: number) {
     console.log("test");
   }
 
