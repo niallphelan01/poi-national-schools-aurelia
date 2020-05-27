@@ -1,6 +1,6 @@
 import { inject } from 'aurelia-framework';
 import { Poi } from '../services/poi-types';
-import {  PoiService } from '../services/poi.service';
+import { PoiService } from '../services/poi.service';
 
 @inject(PoiService)
 export class newPoi {
@@ -8,7 +8,6 @@ export class newPoi {
 
 
   async activate(params, route) {
-
     this.pois = await this.ds.getPois()
     console.log (this.pois);
   }

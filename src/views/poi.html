@@ -1,6 +1,7 @@
 <template>
   <require from="../resources/elements/poi-form"></require>
   <require from="../resources/elements/poi-list"></require>
+  <require from="../resources/elements/poi-map"></require>
 
 
   <div class="ui stackable grid">
@@ -9,6 +10,9 @@
     </div>
   </div>
   <div class="ui stackable grid">
+    <div class="seven wide column">
+      <poi-map></poi-map>
+    </div>
     <div class="seven wide column">
       <poi-list pois.bind="pois"></poi-list>
     </div>

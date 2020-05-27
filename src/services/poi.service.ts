@@ -1,7 +1,7 @@
 import { inject, Aurelia } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { PLATFORM } from 'aurelia-pal';
-import { Poi, RawPoi, User } from './poi-types';
+import { Poi, RawPoi, User, Location } from './poi-types';
 import { HttpClient } from 'aurelia-http-client';
 import { EventAggregator } from 'aurelia-event-aggregator';
 //import { TotalUpdate } from './messages';
@@ -11,12 +11,14 @@ export class PoiService {
   users: Map<string, User> = new Map();
   usersById: Map<string, User> = new Map();
   pois: Poi[] = [];
+  locations: Location[] = [];
 
   constructor(private httpClient: HttpClient, private ea: EventAggregator, private au: Aurelia, private router: Router) {
     httpClient.configure(http => {
       http.withBaseUrl('http://localhost:3000');
     });
     this.getUsers();
+    this.getLocations();
 
   }
 /*
@@ -42,6 +44,14 @@ export class PoiService {
     console.log("Poi information")
     console.log(this.pois);
     return this.pois;
+  }
+
+  async getLocations(){
+    const response = await this.httpClient.get('/api/locations');
+    this.locations = await  response.content;
+    console.log("Poi location information")
+    console.log(this.locations);
+    return this.locations;
   }
   /*
   async getPois() {
