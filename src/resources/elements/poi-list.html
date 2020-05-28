@@ -5,46 +5,14 @@
     <tr>
       <th>AIRO_ID</th>
       <th>Roll Number</th>
-      <th>Add_1</th>
-      <th>Add_2</th>
-      <th>Add_3</th>
-      <th>Add_4</th>
-      <th>County</th>
-      <th>Ethos</th>
-      <th>Island</th>
-      <th>DEIS</th>
-      <th>Gaeltacht</th>
-      <th>Male 13/14</th>
-      <th>Female 13/14<th>
-      <th>Total 13/14</th>
-      <th>xcoord</th>
-      <th>ycoord</th>
-      <th>Long</th>
-      <th>Lat</th>
-      <th>Region</th>
+      <th>location</th>
     </tr>
     </thead>
     <tbody>
     <tr repeat.for="poi of pois">
       <td>${poi.AIRO_ID}</td>
       <td>${poi.Roll_No}</td>
-      <td>${poi.Add_1}</td>
-      <td>${poi.Add_2}</td>
-      <td>${poi.Add_3}</td>
-      <td>${poi.Add_4}</td>
-      <td>${poi.County}</td>
-      <td>${poi.Ethos}</td>
-      <td>${poi.Island}</td>
-      <td>${poi.DEIS}</td>
-      <td>${poi.Gaeltacht}</td>
-      <td>${poi.M_13_14}</td>
-      <td>${poi.F_13_14}</td>
-      <td>${poi.T_13_14}</td>
-      <td>${poi.xcoord}</td>
-      <td>${poi.ycoord}</td>
-      <td>${poi.Long}</td>
-      <td>${poi.Lat}</td>
-      <td>${poi.Region}</td>
+      <td>${poi.location.lat} ${poi.location.lng}</td>
     </tr>
     </tbody>
   </table>

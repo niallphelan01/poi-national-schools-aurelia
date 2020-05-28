@@ -1,7 +1,7 @@
 export interface Location {
-  _id: string;
   lat: number;
   lng: number;
+  _id: string;
 }
 
 export interface Poi {
