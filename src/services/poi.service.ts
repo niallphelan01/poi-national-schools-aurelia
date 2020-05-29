@@ -46,6 +46,10 @@ export class PoiService {
     return this.pois;
   }
 
+  async getLocationById(locationId){
+    const location = this.locations.find(locationId)
+    return location;
+  }
   async getLocations(){
     const response = await this.httpClient.get('/api/locations');
     this.locations = await  response.content;
@@ -53,42 +57,7 @@ export class PoiService {
     console.log(this.locations);
     return this.locations;
   }
-  /*
-  async getPois() {
-  const response = await this.httpClient.get('/api/pois');
-  const rawPois : RawPoi[] = await response.content;
-      rawPois.forEach(rawPoi => {
-      const poi = {
-        _id: rawPoi._id,
-        AIRO_ID: rawPoi.AIRO_ID,
-        Roll_No:rawPoi.Roll_No,
-        Off_Name: rawPoi.Off_Name,
-        Add_1: rawPoi.Add_1,
-        Add_2:rawPoi.Add_2,
-        Add_3:rawPoi.Add_3,
-        Add_4:rawPoi.Add_4,
-        County: rawPoi.County,
-        Ethos: rawPoi.Ethos,
-        Island: rawPoi.Island,
-        DEIS: rawPoi.DEIS,
-        Gaeltacht: rawPoi.Gaeltacht,
-        M_13_14: rawPoi.M_13_14,
-        F_13_14: rawPoi.F_13_14,
-        T_13_14: rawPoi.T_13_14,
-        xcoord: rawPoi.xcoord,
-        ycoord: rawPoi.ycoord,
-        Long: rawPoi.Long,
-        Lat: rawPoi.Lat,
-        Region: rawPoi.Region,
-        userUpdated: rawPoi.userUpdated,
-      };
 
-      this.pois.push(poi);
-      console.log(poi);
-    });
-
-  }
-*/
 
   async createPoi(AIRO_ID: number) {
     console.log("test");

@@ -26,7 +26,7 @@ export class Map {
     };
     this.map = new LeafletMap(this.mapId, mapConfig, 'Terrain');
     this.map.showZoomControl();
-    this.map.addLayerGroup('Pois');
+    this.map.addLayerGroup('National Schools');
     this.map.showLayerControl();
     this.renderPois();
   }
