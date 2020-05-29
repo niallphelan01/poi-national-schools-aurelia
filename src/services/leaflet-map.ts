@@ -50,9 +50,8 @@ export class LeafletMap {
       {
         attribution:
           'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-      })
-  };
-
+      }),
+    }
   constructor(id: string, descriptor: { minZoom: number; location: { lng: number; lat: number }; zoom: number }, activeLayer = '') {
     let defaultLayer = this.baseLayers.Terrain;
     if (activeLayer) {
