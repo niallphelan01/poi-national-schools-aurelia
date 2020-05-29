@@ -3,6 +3,7 @@ import { bindable } from 'aurelia-framework';
 import { Poi } from '../../services/poi-types';
 import {PoiService} from "../../services/poi.service";
 
+//TODO: Add the functionality to add a new POI with location etc
 @inject(PoiService)
 export class PoiForm {
   _id: string;

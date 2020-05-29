@@ -3,16 +3,25 @@
   <table class="ui celled table segment">
     <thead>
     <tr>
-      <th>AIRO_ID</th>
-      <th>Roll Number</th>
+
+      <th>School Name</th>
+      <th>Address</th>
+      <th>County</th>
+      <th>Region</th>
       <th>location</th>
+      <th>Image</th>
     </tr>
     </thead>
     <tbody>
     <tr repeat.for="poi of pois">
-      <td>${poi.AIRO_ID}</td>
-      <td>${poi.Roll_No}</td>
+      <td><button click.trigger="sayHello()">{${poi.Off_Name}</button></td>
+      <td>${poi.Add_1} ${poi.Addr_2} ${poi.Add_3} ${poi.Addr_4}</td>
+      <td>${poi.County}</td>
+      <td>${poi.Region}</td>
       <td>${poi.location.lat} ${poi.location.lng}</td>
+      <td><div class="uk-card-media-top">
+        <img src="${poi.cloudinary_secure_url}">
+      </div></td>
     </tr>
     </tbody>
   </table>

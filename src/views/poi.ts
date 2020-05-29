@@ -3,6 +3,8 @@ import { Poi } from '../services/poi-types';
 import { Location } from '../services/poi-types';
 import { PoiService } from '../services/poi.service';
 
+//TODO: Add functionality to view a singular POI page with all fields.
+
 @inject(PoiService)
 export class newPoi {
   pois: Poi[];
