@@ -9,6 +9,7 @@
       <th>Region</th>
       <th>location</th>
       <th>Image</th>
+      <th>Edit</th>
     </tr>
     </thead>
     <tbody>
@@ -21,6 +22,7 @@
       <td><div class="uk-card-media-top">
         <img src="${poi.cloudinary_secure_url}">
       </div></td>
+      <td><button click.delegate= returnedIndex($index) class = "ui icon button" > <i class="icon trash"></i></button></td>
     </tr>
     </tbody>
   </table>
