@@ -107,6 +107,11 @@ export class PoiService {
     return this.locations;
   }
 
+  async deletePoi(poi: string){
+    const response = await this.httpClient.delete('api/pois/' + poi)
+    console.log(response);
+  }
+
   async signup(firstName: string, lastName: string, email: string, password: string) {
     const user = {
       firstName: firstName,
