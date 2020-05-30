@@ -23,11 +23,18 @@ export class App {
 
        */
       {
+        route: 'singlepoi',
+        name: 'singlepoi',
+        moduleId: PLATFORM.moduleName('views/singlepoi'),
+        nav: false,
+        title: 'Single poi'
+      },
+      {
         route: ['','poi'],
         name: 'poi',
         moduleId: PLATFORM.moduleName('views/poi'),
         nav: true,
-        title: 'Poi'
+        title: 'National Schools'
       },
       {
         route: 'map',

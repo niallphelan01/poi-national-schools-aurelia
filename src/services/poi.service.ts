@@ -91,7 +91,10 @@ export class PoiService {
     console.log(this.pois);
     return this.pois;
   }
-
+  async getSinglePois(id){   //get the single Poi using ID
+    const singlePoi = this.pois.find(id)
+    return singlePoi;
+  }
   async getLocationById(locationId){
     const location = this.locations.find(locationId)
     return location;
