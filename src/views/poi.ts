@@ -11,6 +11,7 @@ export class newPoi {
   location:Location[];
 
 
+
   async activate(params, route) {
     this.pois = await this.ds.getPois()
     this.location=await this.ds.getLocations()

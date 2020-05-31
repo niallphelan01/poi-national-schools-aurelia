@@ -12,6 +12,7 @@ export class PoiService {
   usersById: Map<string, User> = new Map();
   pois: Poi[] = [];
   locations: Location[] = [];
+  currentUser: User ;
 
   constructor(private httpClient: HttpClient, private ea: EventAggregator, private au: Aurelia, private router: Router) {
     httpClient.configure(http => {
@@ -28,6 +29,51 @@ export class PoiService {
     console.log(this.candidates);
   }
 */
+  async createPoi( AIRO_ID : number, Roll_No : string, Off_Name: string, Add_1: string, Add_2: string,
+                  Add_3: string, Add_4: string, County: string, Ethos: string, Island: string, DEIS: string,
+                  Gaeltacht: string, M_13_14: number, F_13_14: number, T_13_14: number, xcoord: number,
+                  ycoord: number, location: string, cloudinary_public_secure_url: string,
+                   cloudinary_public_id: string,Region: string,) {
+    const poi = {
+      AIRO_ID : AIRO_ID,
+      Roll_No : Roll_No,
+      Off_Name: Off_Name,
+      Add_1: Add_1,
+      Add_2: Add_2,
+      Add_3: Add_3,
+      Add_4: Add_4,
+      County: County,
+      Ethos: Ethos,
+      Island: Island,
+      DEIS: DEIS,
+      Gaeltacht: Gaeltacht,
+      M_13_14: M_13_14,
+      F_13_14: F_13_14,
+      T_13_14: T_13_14,
+      xcoord: xcoord,
+      ycoord: ycoord,
+      location: location,
+      Region: Region,
+      userUpdated: this.currentUser._id,
+      cloudinary_public_id: cloudinary_public_id,
+      cloudinary_public_secure_url: cloudinary_public_secure_url,
+    };
+    //TODO: get the current logged in user and apply to the api string
+    const response = await this.httpClient.post('/api/users/' + this.currentUser._id + '/pois', poi);
+    // @ts-ignore
+    this.pois.push(poi);
+  }
+
+  async createLocation(lat: number , lng: number) {
+    const location = {
+      lat:lat,
+      lng: lng,
+    };
+    const response = await this.httpClient.post('/api/locations', location);
+    const newLocations = await response.content;
+    let number = this.locations.push(newLocations);
+    return newLocations._id;
+  }
 
   async getUsers() {
     const response = await this.httpClient.get('/api/users');
@@ -45,7 +91,11 @@ export class PoiService {
     console.log(this.pois);
     return this.pois;
   }
-
+  async getSinglePois(id){   //get the single Poi using ID
+    const singlePoi = this.pois.find(e => e._id === id)
+    https://riptutorial.com/typescript/example/29544/finding-object-in-array
+    return singlePoi;
+  }
   async getLocationById(locationId){
     const location = this.locations.find(locationId)
     return location;
@@ -58,9 +108,9 @@ export class PoiService {
     return this.locations;
   }
 
-
-  async createPoi(AIRO_ID: number) {
-    console.log("test");
+  async deletePoi(poi: string){
+    const response = await this.httpClient.delete('api/pois/' + poi)
+    console.log(response);
   }
 
   async signup(firstName: string, lastName: string, email: string, password: string) {
@@ -82,6 +132,7 @@ export class PoiService {
     const user = this.users.get(email);
     if (user && (user.password === password)) {
       await this.getPois();
+      this.currentUser = user;  //assign the user to a global variable of currentUser as this is needed when creating a poi
       this.changeRouter(PLATFORM.moduleName('app'))
       return true;
     } else {
