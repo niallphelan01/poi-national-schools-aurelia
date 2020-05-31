@@ -7,7 +7,7 @@ import {inject} from "aurelia-framework";
 @inject(PoiService)
 export class PoiMap {
   mapId = 'poi-map';
-  mapHeight = 600;
+  mapHeight = 300;
   map: LeafletMap;
 
 //private ea: EventAggregator,

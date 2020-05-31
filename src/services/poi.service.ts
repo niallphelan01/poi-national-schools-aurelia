@@ -92,7 +92,8 @@ export class PoiService {
     return this.pois;
   }
   async getSinglePois(id){   //get the single Poi using ID
-    const singlePoi = this.pois.find(id)
+    const singlePoi = this.pois.find(e => e._id === id)
+    https://riptutorial.com/typescript/example/29544/finding-object-in-array
     return singlePoi;
   }
   async getLocationById(locationId){

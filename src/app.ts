@@ -23,7 +23,7 @@ export class App {
 
        */
       {
-        route: 'singlepoi',
+        route: 'singlepoi/:id',
         name: 'singlepoi',
         moduleId: PLATFORM.moduleName('views/singlepoi'),
         nav: false,
