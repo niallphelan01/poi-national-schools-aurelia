@@ -33,10 +33,6 @@ export class PoiList {
     console.log("response from the function")
     console.log(response)
 
-
-
-
-
   }
   constructor (private ds: PoiService) {
     }
@@ -44,7 +40,9 @@ export class PoiList {
   deleteSinglePoi(index) {
 
     const poi = this.pois[index]._id;
+
     const response = this.ds.deletePoi(poi);
+    const responseSplice = this.ds.pois.splice(index,1)
     console.log(response);
     //TODO refresh the screen
   }
