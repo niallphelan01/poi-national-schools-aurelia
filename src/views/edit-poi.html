@@ -1,0 +1,53 @@
+<template>
+
+  <require from="../resources/elements/poi-description.html"></require>
+    <div class="uk-text-center " uk-grid >
+    <div class="uk-width-expand@m uk-animation-slide-left">
+      <div id="edit-poi-map"  style="height:300px; z-index: 0"></div>
+    </div>
+    <div class="uk-width-auto@m uk-animation-slide-left">
+      <poi-description poi.one-way="poi"></poi-description>
+    </div>
+
+  </div>
+  <form submit.trigger="updatePoi()" class="ui form stacked segment">
+    <h3 class="ui dividing header">Add a National school ${poi.Off_name}</h3>
+    <div class="uk-width-expand@m uk-animation-slide-right">
+    <div class="three fields">
+      <div class="field"><label>AIRO_ID </label> <input value.bind="poi.AIRO_ID" /></div>
+      <div class="field"><label>Roll No </label> <input value.bind="poi.Roll_No" /></div>
+      <div class="field"><label>Office Name </label> <input value.bind="poi.Off_Name" /></div>
+    </div>
+      <div class="three fields">
+        <div class="field"><label>Address Line 4</label> <input value.bind="poi.Add_4" /></div>
+        <div class="field"><label>County</label> <input value.bind="poi.County" /></div>
+        <div class="field"><label>Ethos </label> <input value.bind="poi.Ethos" /></div>
+      </div>
+      <div class="three fields">
+        <div class="field"><label>Address Line 1 </label> <input value.bind="poi.Add_1" /></div>
+        <div class="field"><label>Address Line 2 </label> <input value.bind="poi.Add_2" /></div>
+        <div class="field"><label>Address Line 3</label> <input value.bind="poi.Add_3" /></div>
+      </div>
+      <div class="three fields">
+        <div class="field"><label>Island </label> <input value.bind="poi.Island" /></div>
+        <div class="field"><label>Deis </label> <input value.bind="poi.DEIS" /></div>
+        <div class="field"><label>Gaeltacht </label> <input value.bind="poi.Gaeltacht" /></div>
+      </div>
+      <div class="three fields">
+        <div class="field"><label>Male </label> <input value.bind="poi.M_13_14" /></div>
+        <div class="field"><label>Female </label> <input value.bind="poi.F_13_14" /></div>
+        <div class="field"><label>Total </label> <input value.bind="poi.T_13_14" /></div>
+      </div>
+      <div class="five fields">
+        <div class="field"><label>xCoord </label> <input value.bind="poi.xcoord" /></div>
+        <div class="field"><label>yCoord </label> <input value.bind="poi.ycoord" /></div>
+        <div class="field"><label>Region</label> <input value.bind="poi.Region" /></div>
+        <div class="field"><label>Location Lat</label> <input value.bind="poi.location.lat" /></div>
+        <div class="field"><label>Location Long</label> <input value.bind="poi.location.lng" /></div>
+      </div>
+    <button class="ui blue submit button">Update</button>
+      <button class="uk-button uk-button-default"><a route-href="route: edit-poi; params.bind: {id:poi._id}" >
+        Main menu</a></button>
+    </div>
+  </form>
+</template>

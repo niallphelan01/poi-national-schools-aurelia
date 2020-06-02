@@ -5,9 +5,9 @@ import { LeafletMap } from "../services/leaflet-map";
 import {inject} from "aurelia-framework";
 
 @inject(PoiService)
-export class editPopi {
-  title = "Single POI View";
-  mapId = "single-poi-map";
+export class editPoi {
+  title = "Edit POI View";
+  mapId = "edit-poi-map";
   map: LeafletMap;
   mapHeight: 200;
   mapConfig = {
@@ -37,7 +37,12 @@ export class editPopi {
     }
   }
 
+  updatePoi() {
+    alert("You are updating the poi");
+    const response = this.ds.updatePoi(this.poi);
 
+
+  }
 //Get the id of the singlePoi to show
   async activate(params) {
     const poiId = params.id;
@@ -46,9 +51,8 @@ export class editPopi {
 
   }
 
-
   attached() {
-    this.map = new LeafletMap("single-poi-map",this.mapConfig,'Terrain')
+    this.map = new LeafletMap("edit-poi-map",this.mapConfig,'Terrain')
     this.map.showZoomControl();
     this.map.addLayerGroup('National Schools');
     this.map.showLayerControl();
