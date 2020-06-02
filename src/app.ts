@@ -30,6 +30,13 @@ export class App {
         title: 'Single poi'
       },
       {
+        route: 'edit-poi/:id',
+        name: 'edit-poi',
+        moduleId: PLATFORM.moduleName('views/edit-poi'),
+        nav: false,
+        title: 'edit-poi'
+      },
+      {
         route: ['','poi'],
         name: 'poi',
         moduleId: PLATFORM.moduleName('views/poi'),

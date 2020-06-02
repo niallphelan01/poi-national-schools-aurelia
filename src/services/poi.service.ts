@@ -137,8 +137,6 @@ export class PoiService {
   async getLocations(){
     const response = await this.httpClient.get('/api/locations');
     this.locations = await  response.content;
-    console.log("Poi location information")
-    console.log(this.locations);
     return this.locations;
   }
 
@@ -161,7 +159,16 @@ export class PoiService {
     this.changeRouter(PLATFORM.moduleName('app'))
     return false;
   }
-
+  async updatePoi(poi:Poi){
+    try{
+      console.log(poi);
+      const updateResponse = await this.httpClient.put('api/pois/'+ poi._id , poi)
+      console.log(updateResponse);
+    }
+    catch(e){
+      console.log(e);
+    }
+  }
   async login(email: string, password: string) {
     const user = this.users.get(email);
     if (user && (user.password === password)) {
