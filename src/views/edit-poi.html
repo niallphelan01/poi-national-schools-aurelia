@@ -11,7 +11,7 @@
 
   </div>
   <form submit.trigger="updatePoi()" class="ui form stacked segment">
-    <h3 class="ui dividing header">Add a National school ${poi.Off_name}</h3>
+    <h3 class="ui dividing header">Edit a National school ${poi.Off_name}</h3>
     <div class="uk-width-expand@m uk-animation-slide-right">
     <div class="three fields">
       <div class="field"><label>AIRO_ID </label> <input value.bind="poi.AIRO_ID" /></div>
@@ -46,7 +46,7 @@
         <div class="field"><label>Location Long</label> <input value.bind="poi.location.lng" /></div>
       </div>
     <button class="ui blue submit button">Update</button>
-      <button class="uk-button uk-button-default"><a route-href="route: edit-poi; params.bind: {id:poi._id}" >
+      <button class="uk-button uk-button-default"><a route-href="route: poi" >
         Main menu</a></button>
     </div>
   </form>

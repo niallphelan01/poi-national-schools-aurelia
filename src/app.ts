@@ -1,9 +1,12 @@
 import { RouterConfiguration, Router } from 'aurelia-router';
 import { PLATFORM } from 'aurelia-pal';
+import {PoiService} from "./services/poi.service";
 
 export class App {
   router: Router;
 
+  constructor(private ds: PoiService) {
+  }
   configureRouter(config: RouterConfiguration, router: Router) {
     config.map([
       /*{
@@ -23,7 +26,17 @@ export class App {
 
        */
       {
-        route: 'singlepoi/:id',
+        route: 'user-settings',
+        name: 'user-settings',
+        moduleId: PLATFORM.moduleName('views/user-settings'),
+        nav: true,
+        title: 'User-Settings'
+      },
+
+
+
+      {
+        route: 'singlepoi',
         name: 'singlepoi',
         moduleId: PLATFORM.moduleName('views/singlepoi'),
         nav: false,
@@ -41,14 +54,14 @@ export class App {
         name: 'poi',
         moduleId: PLATFORM.moduleName('views/poi'),
         nav: true,
-        title: 'National Schools'
+        title: 'National Schools list'
       },
       {
         route: 'map',
         name: 'map',
         moduleId: PLATFORM.moduleName('views/map'),
         nav: true,
-        title: 'Map'
+        title: 'Map View'
       },
       {
         route: 'logout',

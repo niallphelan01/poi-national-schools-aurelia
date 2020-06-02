@@ -169,6 +169,16 @@ export class PoiService {
       console.log(e);
     }
   }
+  async updateUser(user:User){
+    try{
+      console.log(user);
+      const updateResponse = await this.httpClient.put('api/users/'+ user._id , user)
+      console.log(updateResponse);
+    }
+    catch(e){
+      console.log(e);
+    }
+  }
   async login(email: string, password: string) {
     const user = this.users.get(email);
     if (user && (user.password === password)) {
