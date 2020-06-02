@@ -1,6 +1,9 @@
 {
   "debug": true,
   "testing": true,
-  "weatherApiKey": "9e66b656da88e40361678d9b4587316e"
+  "weatherApiKey": "9e66b656da88e40361678d9b4587316e",
+  "cloudinary_secret_key": "utygsCw3-XwrmT2CsyiVyWZclfk",
+  "cloudinary_key" :"221829877636215",
+  "cloudinary_name": "dcswkfi6w"
 }
 

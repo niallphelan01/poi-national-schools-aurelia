@@ -4,6 +4,7 @@ import { PLATFORM } from 'aurelia-pal';
 import { Poi, RawPoi, User, Location } from './poi-types';
 import { HttpClient } from 'aurelia-http-client';
 import { EventAggregator } from 'aurelia-event-aggregator';
+import {config} from "@fortawesome/fontawesome-svg-core";
 //import { TotalUpdate } from './messages';
 
 @inject(HttpClient, EventAggregator, Aurelia, Router)
@@ -14,10 +15,14 @@ export class PoiService {
   locations: Location[] = [];
   currentUser: User ;
 
+
+
+
   constructor(private httpClient: HttpClient, private ea: EventAggregator, private au: Aurelia, private router: Router) {
     httpClient.configure(http => {
       http.withBaseUrl('http://localhost:3000');
     });
+
     this.getUsers();
     this.getLocations();
 
@@ -91,6 +96,35 @@ export class PoiService {
     console.log(this.pois);
     return this.pois;
   }
+  async sendImageCloudinary(formData,poi){
+   const cloudinary = new HttpClient();     //creation of a new instance of httpclient to post to cloudinadt
+     cloudinary.configure(http => {
+          http.withBaseUrl('https://api.cloudinary.com/v1_1/dcswkfi6w/');
+       })
+    try{
+       //formData includes the file and details
+      const response =  await cloudinary.post('image/upload/',formData);
+       console.log(response.content)
+       console.log(response.content.secure_url);
+       console.log (poi.cloudinary_secure_url);
+       console.log(response.content.public_id);
+       console.log(poi.cloudinary_public_id);
+       poi.cloudinary_secure_url = response.content.secure_url;
+       poi.cloudinary_public_id = response.content.public_id;
+      console.log(poi._id);
+      this.httpClient.configure( http =>{
+        http.withBaseUrl('http://localhost:3000');
+      });
+      const updateResponse = await this.httpClient.put('api/pois/'+ poi._id , poi)
+      console.log(updateResponse);
+      return response.content;
+    }
+    catch(e){
+       console.log(e)
+    }
+
+  }
+
   async getSinglePois(id){   //get the single Poi using ID
     const singlePoi = this.pois.find(e => e._id === id)
     https://riptutorial.com/typescript/example/29544/finding-object-in-array
