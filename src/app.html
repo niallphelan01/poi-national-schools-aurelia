@@ -1,10 +1,12 @@
 <template>
   <require from="resources/elements/nav-bar.html"></require>
-
+  <require from="./resources/elements/poi-sidebar"></require>
   <div class="ui container">
+    <poi-sidebar></poi-sidebar>
     <section class="ui raised segment">
       <h3 class="ui headder"> National School Data </h3>
     </section>
+
     <nav-bar router.bind="router"></nav-bar>
     <div class="ui basic segment">
       <router-view></router-view>

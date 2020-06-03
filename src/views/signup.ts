@@ -14,6 +14,7 @@ export class Signup {
   signup(e) {
     console.log(`Trying to sign up ${this.email}`);
     const success = this.ds.signup(this.firstName, this.lastName, this.email, this.password);
+    console.log(success)
     if (!success) {
       this.prompt = 'Oops! Try again...';
     }

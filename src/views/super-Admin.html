@@ -1,0 +1,34 @@
+<template bindable="users">
+  ${user._id}
+  <table class="ui celled table segment">
+    <thead>
+    <tr>
+      <th>Delete</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Authorisation level</th>
+      <th>ObjectId</th>
+      <th>Upgrade to admin TBC</th>
+      <th>Downgrade to user TBC</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr repeat.for="user of users">
+      <td>
+      <button click.delegate= deleteUser($index) class = "ui icon button" >
+        <i class="icon trash"></i></button></td>
+      <td> ${user.firstName}</td>
+      <td> ${user.lastName} </td>
+      <td> ${user.email} </td>
+      <td> ${user.level} </td>
+      <td> ${user._id}</td>
+      <td>
+        <button click.delegate= upgradeUser($index) class = "ui icon button" >
+          <i class="arrow up icon"></i></button></td>
+      <td><a href="/userSettings/updateAdminToUser/{{this._id}}" class="ui icon button">
+        <i class="arrow down icon"></i></a> </td>
+    </tr>
+    </tbody>
+  </table>
+</template>

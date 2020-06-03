@@ -16,6 +16,7 @@ export class newPoi {
     this.pois = await this.ds.getPois()
     this.location=await this.ds.getLocations()
     console.log (this.pois);
+    console.log (this.location)
   }
 
 
@@ -23,9 +24,6 @@ export class newPoi {
    this.pois = ds.pois;
 
 
-    //this.donations = ds.donations;
-    //this.paymentMethods = ds.paymentMethods;
-    //this.total = ds.total;
-  }
+     }
 
 }

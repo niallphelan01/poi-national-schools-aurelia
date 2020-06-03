@@ -11,11 +11,10 @@ import {config} from "@fortawesome/fontawesome-svg-core";
 export class PoiService {
   users: Map<string, User> = new Map();
   usersById: Map<string, User> = new Map();
+  usersArray: User[] = [];
   pois: Poi[] = [];
   locations: Location[] = [];
   currentUser: User ;
-
-
 
 
   constructor(private httpClient: HttpClient, private ea: EventAggregator, private au: Aurelia, private router: Router) {
@@ -87,6 +86,8 @@ export class PoiService {
       this.users.set(user.email, user);
       this.usersById.set(user._id, user);
     });
+    this.usersArray = users;
+    console.log("Users listing");
     console.log(users);
   }
   async getPois(){
@@ -95,6 +96,7 @@ export class PoiService {
     console.log("Poi information")
     console.log(this.pois);
     return this.pois;
+    console.log(this.pois);
   }
   async sendImageCloudinary(formData,poi){
    const cloudinary = new HttpClient();     //creation of a new instance of httpclient to post to cloudinadt
@@ -130,6 +132,9 @@ export class PoiService {
     https://riptutorial.com/typescript/example/29544/finding-object-in-array
     return singlePoi;
   }
+
+
+
   async getLocationById(locationId){
     const location = this.locations.find(locationId)
     return location;
@@ -145,6 +150,11 @@ export class PoiService {
     console.log(response);
   }
 
+  async deleteUser(user){
+    const response = await this.httpClient.delete('api/users/' + user);
+    console.log(response);
+  }
+
   async signup(firstName: string, lastName: string, email: string, password: string) {
     const user = {
       firstName: firstName,
@@ -156,8 +166,9 @@ export class PoiService {
     const newUser = await response.content;
     this.users.set(newUser.email, newUser);
     this.usersById.set(newUser._id, newUser);
-    this.changeRouter(PLATFORM.moduleName('app'))
-    return false;
+    this.changeRouter(PLATFORM.moduleName('start'))
+    //return false;
+    return response;
   }
   async updatePoi(poi:Poi){
     try{

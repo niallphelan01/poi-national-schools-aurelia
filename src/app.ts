@@ -8,23 +8,10 @@ export class App {
   constructor(private ds: PoiService) {
   }
   configureRouter(config: RouterConfiguration, router: Router) {
+    config.title = "National Schools";
+    config.options.pushState = true;
     config.map([
-      /*{
-        route: ['', 'donate'],
-        name: 'Donate',
-        moduleId: PLATFORM.moduleName('views/donate'),
-        nav: true,
-        title: 'Donate'
-      },
-      {
-        route: 'candidates',
-        name: 'candidates',
-        moduleId: PLATFORM.moduleName('views/candidates'),
-        nav: true,
-        title: 'Candidate'
-      },
 
-       */
       {
         route: 'user-settings',
         name: 'user-settings',
@@ -32,11 +19,15 @@ export class App {
         nav: true,
         title: 'User-Settings'
       },
-
-
-
       {
-        route: 'singlepoi',
+        route: 'super-Admin',
+        name: 'super-Admin',
+        moduleId: PLATFORM.moduleName('views/super-Admin'),
+        nav: true,
+        title: 'Admin User settings'
+      },
+      {
+        route: 'singlepoi/:id',
         name: 'singlepoi',
         moduleId: PLATFORM.moduleName('views/singlepoi'),
         nav: false,
