@@ -26,8 +26,9 @@
       <td>
         <button click.delegate= upgradeUser($index) class = "ui icon button" >
           <i class="arrow up icon"></i></button></td>
-      <td><a href="/userSettings/updateAdminToUser/{{this._id}}" class="ui icon button">
-        <i class="arrow down icon"></i></a> </td>
+      <td>
+        <button click.delegate= downgradeUser($index) class = "ui icon button" >
+          <i class="arrow down icon"></i></button></td>
     </tr>
     </tbody>
   </table>

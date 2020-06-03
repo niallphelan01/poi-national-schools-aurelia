@@ -54,6 +54,24 @@ export class SuperAdmin {
       alert(err);
     }
   }
+  downgradeUser(index){
+    try {
+      const user = this.users[index];
+      if (user.level === 'admin') {
+        user.level = 'basic';
+        alert(user.level);
+        const response = this.ds.updateUser(user);
+      } else if (user.level === 'superAdmin') {
+        user.level = 'admin'
+        alert(user.level);
+        const response = this.ds.updateUser(user);
+      } else
+        alert('already basic')
+    } catch (err) {
+      alert(err);
+    }
+  }
+
 }
 
 
