@@ -198,21 +198,17 @@ export class PoiService {
     console.log(response);
   }
 
-  async signup(firstName: string, lastName: string, email: string, password: string) {
+ signup(firstName: string, lastName: string, email: string, password: string) {
     const user = {
       firstName: firstName,
       lastName: lastName,
       email: email,
       password: password
     };
-    const response = await this.httpClient.post('/api/users', user);
-    const newUser = await response.content;
-    this.users.set(newUser.email, newUser);
-    this.usersById.set(newUser._id, newUser);
-    this.changeRouter(PLATFORM.moduleName('start'))
-    //return false;
-    return response;
-  }
+     const response =  this.httpClient.post('/api/users', user);
+     return response; //return the response to the function in the signup.ts and handle user creation here.
+     }
+
   async updatePoi(poi:Poi){
     try{
       console.log(poi);
