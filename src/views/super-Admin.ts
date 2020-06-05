@@ -25,15 +25,14 @@ export class SuperAdmin {
 
   deleteUser(index) {
     const user = this.users[index];
-    if(user.level === 'basic'|| user.level === 'admin') {
+    if (user.level === 'basic' || user.level === 'admin') {
       console.log(user._id);
       const response = this.ds.deleteUser(user);
       const responseSplice = this.ds.usersArray.splice(index, 1);
       console.log(response);
       this.ds.getUsers();
       this.users = this.ds.usersArray;
-    }
-    else
+    } else
       this.prompt = "Super Admin users cant be deleted";
   }
 
@@ -54,7 +53,8 @@ export class SuperAdmin {
       alert(err);
     }
   }
-  downgradeUser(index){
+
+  downgradeUser(index) {
     try {
       const user = this.users[index];
       if (user.level === 'admin') {
@@ -72,6 +72,12 @@ export class SuperAdmin {
     }
   }
 
+
+  deleteAllPoi = () => {
+    const response = this.ds.deleteAll(); //call function in poi service to delete all users
+    console.log(response);
+
+  }
 }
 
 

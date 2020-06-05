@@ -150,6 +150,28 @@ export class PoiService {
     console.log(response);
   }
 
+   deleteAll = async () => {
+     try
+     {
+       const response = await this.httpClient.delete('api/users');
+       console.log(response);
+       if (response.statusText === "success")
+          this.users.clear() //delete all users in the map
+          this.usersById.clear() //delete all users in the map
+          this.usersArray = []; //delete all users in the array
+          const responseGetUSers  = await this.getUsers(); // re-initalise
+          this.logout();
+     }
+     catch(e){
+       const response = "error deleteing all users:" + e;
+       return response;
+     }
+
+  }
+  //async deleteAll() {
+  //  const response = await this.httpClient.delete('api/users');
+  //}
+
   async deleteUser(user){
     const response = await this.httpClient.delete('api/users/' + user);
     console.log(response);
