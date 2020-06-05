@@ -150,7 +150,7 @@ export class PoiService {
     console.log(response);
   }
 
-   deleteAll = async () => {
+  deleteAllUsers = async () => {
      try
      {
        const response = await this.httpClient.delete('api/users');
@@ -168,9 +168,30 @@ export class PoiService {
      }
 
   }
-  //async deleteAll() {
-  //  const response = await this.httpClient.delete('api/users');
-  //}
+
+  deleteAllPoi = async () =>{
+    try{
+      const response = await this.httpClient.delete('api/pois');
+      console.log(response);
+      if (response.statusText == "success") //check that the http request was successful
+      {
+        this.pois = []; //delete the local data also
+        const response = await this.httpClient.delete('api/locations');
+        if (response.statusText == "success") {
+          this.locations = []; //delete the local data also
+          const responseText = "Successful deletion of all POI and location information"
+          return responseText;
+        }
+      }
+    }
+    catch(e){
+      const response = "error deleteing all users/location:" + e;
+      return response;
+    }
+
+
+
+  }
 
   async deleteUser(user){
     const response = await this.httpClient.delete('api/users/' + user);

@@ -73,10 +73,13 @@ export class SuperAdmin {
   }
 
 
-  deleteAllPoi = () => {
-    const response = this.ds.deleteAll(); //call function in poi service to delete all users
-    console.log(response);
+  deleteAllUsers = () => {
+    const response = this.ds.deleteAllUsers(); //call function in poi service to delete all users
+  }
 
+  deleteAllPoi = () =>{
+    const response = this.ds.deleteAllPoi(); //call function in the poi service to delete all pois and locations
+    alert ("Request has been sent to delete all National schools and location information");
   }
 }
 
