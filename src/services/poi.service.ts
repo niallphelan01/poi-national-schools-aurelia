@@ -16,7 +16,12 @@ export class PoiService {
   locations: Location[] = [];
   currentUser: User ;
 
-
+  constructor(private httpClient: HttpClient, private ea: EventAggregator, private au: Aurelia, private router: Router) {
+    httpClient.configure((http) => {
+      http.withBaseUrl('http://localhost:3000');
+    });
+  }
+/*
   constructor(private httpClient: HttpClient, private ea: EventAggregator, private au: Aurelia, private router: Router) {
     httpClient.configure(http => {
       http.withBaseUrl('http://localhost:3000');
@@ -194,7 +199,7 @@ export class PoiService {
   }
 
   async deleteUser(user){
-    const response = await this.httpClient.delete('api/users/' + user);
+    const response = await this.httpClient.delete('api/users/' + user._id);
     console.log(response);
   }
 
@@ -230,18 +235,36 @@ export class PoiService {
     }
   }
   async login(email: string, password: string) {
-    const user = this.users.get(email);
-    if (user && (user.password === password)) {
-      await this.getPois();
-      this.currentUser = user;  //assign the user to a global variable of currentUser as this is needed when creating a poi
-      this.changeRouter(PLATFORM.moduleName('app'))
-      return true;
-    } else {
-      return false;
+    let success = false;
+    try {
+      const response = await this.httpClient.post('/api/users/authenticate', { email: email, password: password });
+
+      const status = await response.content;
+      if (status.success) {
+        this.httpClient.configure((configuration) => {
+          configuration.withHeader('Authorization', 'bearer ' + status.token);
+        });
+
+        await this.getUsers(); //had to make this await to get the current user logging in
+        this.getLocations();
+        console.log("current user logging in");
+        const user = this.users.get(email);
+        this.currentUser = user;  //assign the user to a global variable of currentUser as this is needed when creating a poi and or user settings
+        console.log(this.currentUser);
+        this.changeRouter(PLATFORM.moduleName('app'));
+        success = status.success;
+      }
+    } catch (e) {
+      success = false;
     }
+    return success;
   }
 
   logout() {
+    this.httpClient.configure(configuration => {
+      configuration.withHeader('Authorization', '');
+    });
+    this.currentUser =null; //delete the details of the current user logging in
     this.changeRouter(PLATFORM.moduleName('start'))
   }
 

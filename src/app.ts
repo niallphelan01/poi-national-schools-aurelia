@@ -13,7 +13,7 @@ export class App {
     config.map([
 
       {
-        route: 'user-settings',
+        route: 'user-settings/',
         name: 'user-settings',
         moduleId: PLATFORM.moduleName('views/user-settings'),
         nav: true,

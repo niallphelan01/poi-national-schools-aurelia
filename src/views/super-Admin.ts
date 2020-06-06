@@ -25,7 +25,9 @@ export class SuperAdmin {
 
   deleteUser(index) {
     const user = this.users[index];
+
     if (user.level === 'basic' || user.level === 'admin') {
+      console.log("id of the user to delete")
       console.log(user._id);
       const response = this.ds.deleteUser(user);
       const responseSplice = this.ds.usersArray.splice(index, 1);
@@ -78,6 +80,7 @@ export class SuperAdmin {
   }
 
   deleteAllPoi = () =>{
+
     const response = this.ds.deleteAllPoi(); //call function in the poi service to delete all pois and locations
     alert ("Request has been sent to delete all National schools and location information");
   }
