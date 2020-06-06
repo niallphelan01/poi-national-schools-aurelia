@@ -4,7 +4,7 @@ import { PoiService } from '../services/poi.service';
 @inject(PoiService)
 export class Login {
   email = 'admin@test.com';
-  password = '$2b$10$pkaH1uQVl3.AaDz0DE.3..HnvdntD5EVNCa9gkZ5J3ZTivULJenyy';
+  password = 'secret';
   prompt = '';
 
   constructor(private ds: PoiService) {}
