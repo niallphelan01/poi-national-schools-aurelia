@@ -1,8 +1,12 @@
 import { RouterConfiguration, Router } from 'aurelia-router';
 import { PLATFORM } from 'aurelia-pal';
+import {PoiService} from "./services/poi.service";
+import{inject} from 'aurelia-framework';
 
+@inject(PoiService)
 export class Start {
   router: Router;
+  constructor(private ds: PoiService) {}
 
   configureRouter(config: RouterConfiguration, router: Router) {
     config.map([
@@ -23,4 +27,7 @@ export class Start {
     ]);
     this.router = router;
   }
+     attached() {
+    this.ds.checkIsAuthenticated();
+    }
 }

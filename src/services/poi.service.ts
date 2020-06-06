@@ -244,7 +244,8 @@ export class PoiService {
         this.httpClient.configure((configuration) => {
           configuration.withHeader('Authorization', 'bearer ' + status.token);
         });
-
+        //https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+        localStorage.poi = JSON.stringify(response.content); //local storage of jwt token
         await this.getUsers(); //had to make this await to get the current user logging in
         this.getLocations();
         console.log("current user logging in");
@@ -259,8 +260,20 @@ export class PoiService {
     }
     return success;
   }
+  checkIsAuthenticated() {
+    let authenticated = false;
+    if (localStorage.poi !== 'null') {
+      authenticated = true;
+      this.httpClient.configure(http => {
+        const auth = JSON.parse(localStorage.poi);
+        http.withHeader('Authorization', 'bearer ' + auth.token);
+      });
+      this.changeRouter(PLATFORM.moduleName('app'));
+    }
+  }
 
   logout() {
+    localStorage.poi = null;
     this.httpClient.configure(configuration => {
       configuration.withHeader('Authorization', '');
     });
