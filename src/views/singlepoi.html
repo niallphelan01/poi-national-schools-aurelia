@@ -1,0 +1,17 @@
+<template bindable="poi">
+
+  <require from="../resources/elements/poi-description.html"></require>
+  <require from="../resources/elements/poi-details.html"></require>
+    <div class="uk-text-center " uk-grid >
+    <div class="uk-width-expand@m uk-animation-slide-left">
+      <div id="single-poi-map"  style="height:300px; z-index: 0"></div>
+  </div>
+    <div class="uk-width-auto@m uk-animation-slide-left">
+      <poi-description poi.one-way="poi"></poi-description>
+    </div>
+  </div>
+    <div class="uk-width-auto@m uk-animation-slide-right">
+      <poi-details poi.one-way="poi"></poi-details>
+    </div>
+  </div>
+</template>

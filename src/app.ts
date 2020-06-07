@@ -1,40 +1,58 @@
 import { RouterConfiguration, Router } from 'aurelia-router';
 import { PLATFORM } from 'aurelia-pal';
+import {PoiService} from "./services/poi.service";
 
 export class App {
   router: Router;
 
+  constructor(private ds: PoiService) {
+  }
   configureRouter(config: RouterConfiguration, router: Router) {
+    config.title = "National Schools";
+    config.options.pushState = true;
     config.map([
-      /*{
-        route: ['', 'donate'],
-        name: 'Donate',
-        moduleId: PLATFORM.moduleName('views/donate'),
+
+      {
+        route: 'user-settings/',
+        name: 'user-settings',
+        moduleId: PLATFORM.moduleName('views/user-settings'),
         nav: true,
-        title: 'Donate'
+        title: 'User-Settings'
       },
       {
-        route: 'candidates',
-        name: 'candidates',
-        moduleId: PLATFORM.moduleName('views/candidates'),
+        route: 'super-Admin',
+        name: 'super-Admin',
+        moduleId: PLATFORM.moduleName('views/super-Admin'),
         nav: true,
-        title: 'Candidate'
+        title: 'Admin User settings'
       },
-
-       */
+      {
+        route: 'singlepoi/:id',
+        name: 'singlepoi',
+        moduleId: PLATFORM.moduleName('views/singlepoi'),
+        nav: false,
+        title: 'Single poi'
+      },
+      {
+        route: 'edit-poi/:id',
+        name: 'edit-poi',
+        moduleId: PLATFORM.moduleName('views/edit-poi'),
+        nav: false,
+        title: 'edit-poi'
+      },
       {
         route: ['','poi'],
         name: 'poi',
         moduleId: PLATFORM.moduleName('views/poi'),
         nav: true,
-        title: 'Poi'
+        title: 'National Schools list'
       },
       {
         route: 'map',
         name: 'map',
         moduleId: PLATFORM.moduleName('views/map'),
         nav: true,
-        title: 'Map'
+        title: 'Map View'
       },
       {
         route: 'logout',

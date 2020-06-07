@@ -1,0 +1,45 @@
+<template bindable="users">
+  ${user._id}
+  <table class="ui celled table segment">
+    <thead>
+    <tr>
+      <th>Delete</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Authorisation level</th>
+      <th>ObjectId</th>
+      <th>Upgrade to admin TBC</th>
+      <th>Downgrade to user TBC</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr repeat.for="user of users">
+      <td>
+      <button click.delegate= deleteUser($index) class = "ui icon button" >
+        <i class="icon trash"></i></button></td>
+      <td> ${user.firstName}</td>
+      <td> ${user.lastName} </td>
+      <td> ${user.email} </td>
+      <td> ${user.level} </td>
+      <td> ${user._id}</td>
+      <td>
+        <button click.delegate= upgradeUser($index) class = "ui icon button" >
+          <i class="arrow up icon"></i></button></td>
+      <td>
+        <button click.delegate= downgradeUser($index) class = "ui icon button" >
+          <i class="arrow down icon"></i></button></td>
+    </tr>
+    </tbody>
+  </table>
+  <div>
+    <h2>Delete all functionality</h2>
+    <p>Please use only as a last resort</p>
+    <p uk-margin>
+      <button click.delegate= deleteAllUsers() class="uk-button uk-button-danger">Delete All Users</button>
+      <button click.delegate= deleteAllPoi() class="uk-button uk-button-danger">Delete All National Schools</button>
+    </p>
+  </div>
+
+
+</template>

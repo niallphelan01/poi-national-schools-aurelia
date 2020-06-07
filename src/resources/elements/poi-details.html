@@ -1,0 +1,109 @@
+<template bindable="poi">
+  <div class="uk-text-center uk-text-small" uk-grid>
+    <div class="uk-width-expand@m">
+      <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-padding-small">
+        <caption>Location</caption>
+        <div class="uk-card-media-top">
+          <img src='${poi.cloudinary_secure_url}' alt="National school">
+        </div>
+        <div class =" uk-card-body">
+          <table class="uk-table uk-table-divider uk-table-small">
+            <tbody>
+            <tr>
+              <td>Address</td>
+              <td>${poi.Add_1} ${poi.Add_2} ${poi.Add_3} ${poi.Add_4} </td>
+            </tr>
+            <tr>
+              <td>County</td>
+              <td>${poi.County}</td>
+            </tr>
+            <tr>
+              <td>Region</td>
+              <td>${poi.Region}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="uk-width-expand@m">
+      <div class="uk-card uk-card-default uk-card-body uk-card-hover uk-padding-small">
+        <caption>Roll Details</caption>
+        <table class="uk-table uk-table-divider uk-table-small">
+          <tbody>
+          <tr>
+            <td>Airo ID</td>
+            <td>${poi.AIRO_ID}</td>
+          </tr>
+          <tr>
+            <td>Roll_No</td>
+            <td>${poi.Roll_No}</td>
+          </tr>
+          <tr>
+            <td>Enrolled</td>
+          </tr>
+          <tr>
+            <td>Girls ${poi.F_13_14}</td>
+            <td>Boys ${poi.M_13_14}</td>
+          </tr>
+          <tr>
+            <td>Total ${poi.T_13_14}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="uk-text-center uk-text-small" uk-grid>
+    <div class="uk-width-expand@m">
+      <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-padding-small"">
+      <caption>Mapping Data</caption>
+      <table class="uk-table uk-table-divider uk-table-small">
+        <tbody>
+        <tr>
+          <td>Long</td>
+          <td>${poi.location.lng}</td>
+        </tr>
+        <tr>
+          <td>Lat</td>
+          <td>${poi.location.lat}</td>
+        </tr>
+        <tr>
+          <td>xcoord</td>
+          <td>${poi.xcoord}</td>
+        </tr>
+        <tr>
+          <td>ycoord</td>
+          <td>${poi.ycoord}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="uk-width-1-2@m">
+    <div class="uk-card uk-card-default uk-card-body uk-card-hover uk-padding-small"">
+    <caption>Other</caption>
+    <table class="uk-table uk-table-divider uk-table-small">
+      <tbody>
+      <tr>
+        <td>Ethos</td>
+        <td>${poi.Ethos}</td>
+      </tr>
+      <tr>
+        <td>Island</td>
+        <td>${poi.Island}</td>
+      </tr>
+      <tr>
+        <td>Deis</td>
+        <td>${poi.DEIS}</td>
+      </tr>
+      <tr>
+        <td>Gaeltacht</td>
+        <td>${poi.Gaeltacht}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  </div>
+</template>

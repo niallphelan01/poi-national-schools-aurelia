@@ -25,7 +25,9 @@ export interface Poi {
   ycoord: number;
   location: Location;
   Region: string;
-  userUpdated: string;
+  userUpdated: User;
+  cloudinary_public_id: string;
+  cloudinary_public_secure_url: string;
 }
 
 export interface User {

@@ -1,0 +1,19 @@
+<template>
+  <div id="poi-menu" uk-offcanvas="mode: slide;" >
+    <div class="uk-offcanvas-bar">
+      <button class="uk-offcanvas-close" type="button" uk-close></button>
+      <div repeat.for="poi of pois">
+        <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+          <li class="uk-parent">
+            <a href="#">${poi.Region}</a>
+            <ul class="uk-nav-sub">
+              <div repeat.for="poi of pois">
+                <li><a href="/singlepoi/${poi._id}"> ${poi.Off_Name}</a></a></li>
+              </div>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
