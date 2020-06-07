@@ -1,3 +1,13 @@
+#'National school Aurelia based client'
+
+This client has a API based to connection to a server side application (Hapijs application), see more at https://github.com/niallphelan01/POI-National-Schools.git
+
+Mapping features have been enabled on this site and there's a number of national schools implemented in the seeding data.
+
+
+
+
+
 # `poi-client`
 
 This project is bootstrapped by [aurelia-cli](https://github.com/aurelia/cli).
