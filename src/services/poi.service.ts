@@ -18,7 +18,7 @@ export class PoiService {
 
   constructor(private httpClient: HttpClient, private ea: EventAggregator, private au: Aurelia, private router: Router) {
     httpClient.configure((http) => {
-      http.withBaseUrl('http://localhost:3000');
+      http.withBaseUrl('http://3.250.97.148:3000');
     });
   }
 /*
@@ -120,7 +120,7 @@ export class PoiService {
        poi.cloudinary_public_id = response.content.public_id;
       console.log(poi._id);
       this.httpClient.configure( http =>{
-        http.withBaseUrl('http://localhost:3000');
+        http.withBaseUrl('http://3.250.97.148:3000');
       });
       const updateResponse = await this.httpClient.put('api/pois/'+ poi._id , poi)
       console.log(updateResponse);
@@ -134,7 +134,7 @@ export class PoiService {
 
   async getSinglePois(id){   //get the single Poi using ID
     const singlePoi = this.pois.find(e => e._id === id)
-    https://riptutorial.com/typescript/example/29544/finding-object-in-array
+   // https://riptutorial.com/typescript/example/29544/finding-object-in-array
     return singlePoi;
   }
 
