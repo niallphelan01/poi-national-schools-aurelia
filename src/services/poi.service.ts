@@ -18,7 +18,7 @@ export class PoiService {
 
   constructor(private httpClient: HttpClient, private ea: EventAggregator, private au: Aurelia, private router: Router) {
     httpClient.configure((http) => {
-      http.withBaseUrl('http://3.250.97.148:3000');
+      http.withBaseUrl('https://3.250.97.148:3000');
     });
   }
 /*
@@ -120,7 +120,7 @@ export class PoiService {
        poi.cloudinary_public_id = response.content.public_id;
       console.log(poi._id);
       this.httpClient.configure( http =>{
-        http.withBaseUrl('http://3.250.97.148:3000');
+        http.withBaseUrl('https://3.250.97.148:3000');
       });
       const updateResponse = await this.httpClient.put('api/pois/'+ poi._id , poi)
       console.log(updateResponse);
